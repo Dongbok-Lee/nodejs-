@@ -1,7 +1,7 @@
-var express = require('express');
-var http = require('http');
-var app = express();
-var server = http.createServer(app);
+import express from 'express';
+import { createServer } from 'http';
+const app = express();
+var server = createServer(app);
 
 app.get('/', function(req, res){
     res.send('root page');
