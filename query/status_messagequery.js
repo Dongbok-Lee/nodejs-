@@ -1,4 +1,4 @@
-import status_message from '../schemas/status_message';
+import status_message from '../schemas/status_message.js';
 
 export const insert = insertForm => {
     try {
@@ -9,19 +9,19 @@ export const insert = insertForm => {
     }
 }
 
-export const findById = user_id =>{
+export const findById = id =>{
     try {
-        return status_message.findOne({user_id});
+        return status_message.findOne({user_id: id});
     } catch (e){
         console.error(e);
         return e;
     }
 }
 
-export const updateById = (user_id, message)=>{
+export const updateById = (id, msg)=>{
     try {
-        var Date = Date.now();
-        return status_message.findByIdAndUpdate({user_id},{message},{Date});
+        const UDate = Date.now();
+        return status_message.findByIdAndUpdate({user_id: id},{message: msg},{updatedDate: UDate});
     } catch (e){
         console.error(e);
         return e;

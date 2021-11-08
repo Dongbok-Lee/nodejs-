@@ -1,4 +1,4 @@
-import bubble_message from '../schemas/bubble_message';
+import bubble_message from '../schemas/bubble_message.js';
 
 export const insert = insertForm => {
     try {
@@ -9,28 +9,28 @@ export const insert = insertForm => {
     }
 };
 
-export const findById = user_id =>{
+export const findById = id =>{
     try {
-        return bubble_message.findOne({user_id});
+        return bubble_message.findOne({user_id: id});
     } catch (e){
         console.error(e);
         return e;
     }
 };
 
-export const updateById = (user_id, message)=>{
+export const updateById = (id, msg)=>{
     try {
-        var Date = Date.now();
-        return bubble_message.findByIdAndUpdate({user_id},{message},{Date});
+        const UDate = Date.now();
+        return bubble_message.findByIdAndUpdate({user_id: id},{message: msg},{updatedDate: UDate});
     } catch (e){
         console.error(e);
         return e;
     }
 };
 
-export const deleteById = (user_id) =>{
+export const deleteById = (id) =>{
     try {
-        return bubble_message.findByIdAndDelete({user_id});
+        return bubble_message.findByIdAndDelete({user_id: id});
     } catch(e) {
         console.error(e);
         return e;

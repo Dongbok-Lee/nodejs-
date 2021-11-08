@@ -10,7 +10,7 @@ const bubble_messageSchema = new Schema(
             unique: true,
             required: [true, 'user_id is Required!'],
         },
-        messege: {
+        message: {
             type: String,
             required: [true, 'message is Required!']
         },
