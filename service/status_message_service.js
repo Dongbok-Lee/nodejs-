@@ -1,17 +1,43 @@
+import e from 'express';
 import * as status_message from '../query/status_messagequery.js'
 
 export const create_Status_Message = insertForm => {
-    return status_message.insert(insertForm)
+    try{
+        console.log(insertForm);
+        return status_message.insert(insertForm)
+    }catch(e){
+        console.error(e);
+        return e;
+    }
+    
 }
 
 export const delete_Status_Message = id => {
-    return status_message.deleteById(id)
+    try {
+        return status_message.deleteById(id)
+    } catch (e) {
+        console.error(e);
+        return e;
+    }
+   
 }
 
 export const update_Status_Message = id => {
-    return status_message.updateById(id)
+    try {
+        return status_message.updateById(id)
+    } catch (e) {
+        console.error(e);
+        return e;
+    }
+    
 }
 
 export const get_Status_Message = id => {
-    return status_message.findById(id)
+    try {
+        return status_message.findById(id)
+    } catch (e) {
+        console.error(e);
+        return e;
+    }
+
 }

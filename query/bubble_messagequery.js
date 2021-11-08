@@ -1,8 +1,9 @@
-import bubble_message from '../schemas/bubble_message.js';
+import * as bubble_message from '../schemas/bubble_message.js';
+const model = status_message.model;
 
 export const insert = insertForm => {
     try {
-        return bubble_message.create(insertForm);
+        return model.create(insertForm);
     } catch (e){
         console.error(e);
         return e;
@@ -11,7 +12,7 @@ export const insert = insertForm => {
 
 export const findById = id =>{
     try {
-        return bubble_message.findOne({user_id: id});
+        return model.findOne({user_id: id});
     } catch (e){
         console.error(e);
         return e;
@@ -21,7 +22,7 @@ export const findById = id =>{
 export const updateById = (id, msg)=>{
     try {
         const UDate = Date.now();
-        return bubble_message.findByIdAndUpdate({user_id: id},{message: msg},{updatedDate: UDate});
+        return model.findByIdAndUpdate({user_id: id},{message: msg},{updatedDate: UDate});
     } catch (e){
         console.error(e);
         return e;
@@ -30,7 +31,7 @@ export const updateById = (id, msg)=>{
 
 export const deleteById = (id) =>{
     try {
-        return bubble_message.findByIdAndDelete({user_id: id});
+        return model.findByIdAndDelete({user_id: id});
     } catch(e) {
         console.error(e);
         return e;

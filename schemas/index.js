@@ -1,13 +1,21 @@
-import { connect, connection } from 'mongoose';
+import mongoose from 'mongoose'
 
-connect('mongodb://localhost:27017/testDB');
 
-var db = connection;
+export const connect = () => {
+   
+    mongoose.connect('mongodb://localhost:27017/testDB', {}, error =>{
+        if(error){
+            console.log('DB Connection is Error', error);
+        }else{
+            console.log('DB Connction is Succesful');
+        }
+    });
+}
 
-db.on('error', function(){
-    console.log('Connection Failed!');
+mongoose.connection.on('error', error => {
+    console.error('DB Error',error);
 });
 
-db.once('open', function(){
-    console.log('Connected!');
+mongoose.connection.on('disconnected', () => {
+    console.error('DB Disconnected!');
 });

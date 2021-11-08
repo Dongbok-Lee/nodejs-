@@ -1,7 +1,5 @@
 import mongoose from 'mongoose';
 
-const model = mongoose.model;
-
 const {Schema} = mongoose;
 const bubble_messageSchema = new Schema(
     {
@@ -22,4 +20,4 @@ const bubble_messageSchema = new Schema(
     {collection: 'bubble_message'}
 );
 
-module.exports = mongoose.model('bubble_message' , bubble_messageSchema);
+export const model = mongoose.model('bubble_message', bubble_messageSchema);
