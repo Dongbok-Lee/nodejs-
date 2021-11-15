@@ -10,7 +10,7 @@ const bubble_messageSchema = new Schema(
         },
         message: {
             type: String,
-            required: [true, 'message is Required!']
+            required: [false]
         },
         update_time: {
             type: Date,
